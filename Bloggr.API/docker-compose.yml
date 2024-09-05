@@ -1,0 +1,16 @@
+services:
+  bloggr_db:
+    image: postgres:latest
+    container_name: bloggr_db
+    restart: always
+    environment:
+      - POSTGRES_USER=${DEV_DB_USER}
+      - POSTGRES_PASSWORD=${DEV_DB_PASSWORD}
+      - POSTGRES_DB=${DEV_DB_NAME}
+    volumes:
+      - bloggr_db_data:/var/lib/postgresql/data
+    ports:
+      - '${DEV_DB_PORT}:5432'
+
+volumes:
+  bloggr_db_data:
